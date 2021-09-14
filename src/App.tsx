@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import TopPage from './pages/TopPage';
+import WorldPage from './pages/WorldPage';
+
 import './App.css';
 import countriesJson from './countries.json';
 
@@ -21,6 +24,7 @@ function App() {
     newRecovered: 0,
     totalRecovered: 0,
   });
+  const [allCountriesData, setAllCountriesData] = useState<any>();
 
   const getCountryData = () => {
     fetch(`https://api.covid19api.com/country/${country}`)
@@ -36,15 +40,30 @@ function App() {
       });
   }
 
+  useEffect(() => {
+    fetch(`https://api.covid19api.com/summary`)
+      .then(res => res.json())
+      .then(data => setAllCountriesData(data.Countries));
+  }, []);
+
   return (
-    <div className="App">
-      <TopPage
-        countriesJson={countriesJson}
-        setCountry={setCountry}
-        getCountryData={getCountryData}
-        countryData={countryData}
-      />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <TopPage
+            countriesJson={countriesJson}
+            setCountry={setCountry}
+            getCountryData={getCountryData}
+            countryData={countryData}
+          />
+        </Route>
+        <Route path="/world">
+          <WorldPage
+            allCountriesData={allCountriesData}
+          />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
