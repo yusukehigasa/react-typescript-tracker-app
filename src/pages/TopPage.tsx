@@ -1,6 +1,7 @@
-import Title from "../components/Title";
-import Selector from "../components/Selector";
-import Results from "../components/Results";
+import Header from '../components/Header';
+import Title from '../components/Title';
+import Selector from '../components/Selector';
+import Results from '../components/Results';
 
 type CountriesJsonType = {
   Country: string,
@@ -25,6 +26,7 @@ type TopPageType = {
 const TopPage = ({countriesJson, setCountry, getCountryData, countryData}: TopPageType) => {
   return (
     <div>
+      <Header />
       <Title />
       <Selector
         countriesJson={countriesJson}

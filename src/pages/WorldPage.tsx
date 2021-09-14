@@ -1,4 +1,5 @@
-import Title from "../components/Title";
+import Header from '../components/Header';
+import Title from '../components/Title';
 import Card from '../components/Card';
 
 type WorldPageType = {
@@ -8,6 +9,7 @@ type WorldPageType = {
 const WorldPage = ({allCountriesData}: WorldPageType) => {
   return(
     <div>
+      <Header />
       <Title />
       <Card allCountriesData={allCountriesData} />
     </div>
