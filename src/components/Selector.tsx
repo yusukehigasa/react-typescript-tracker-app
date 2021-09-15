@@ -1,10 +1,8 @@
-type CountriesJsonType = {
-  Country: string,
-  Slug: string,
-}[]
-
 type SelectorType = {
-  countriesJson: CountriesJsonType;
+  countriesJson: {
+    Country: string,
+    Slug: string,
+  }[];
   setCountry: React.Dispatch<React.SetStateAction<string>>;
 }
 

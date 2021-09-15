@@ -4,23 +4,19 @@ import Selector from '../components/Selector';
 import Results from '../components/Results';
 import Loading from '../components/Loading';
 
-type CountriesJsonType = {
-  Country: string,
-  Slug: string,
-}[]
-
-type CountryDataType = {
-  date: string,
-  newConfirmed: number,
-  totalConfirmed: number,
-  newRecovered: number,
-  totalRecovered: number,
-}
-
 type TopPageType = {
-  countriesJson: CountriesJsonType;
+  countriesJson: {
+    Country: string,
+    Slug: string,
+  }[];
   setCountry: React.Dispatch<React.SetStateAction<string>>;
-  countryData: CountryDataType;
+  countryData: {
+    date: string,
+    newConfirmed: number,
+    totalConfirmed: number,
+    newRecovered: number,
+    totalRecovered: number,
+  };
   loading: boolean;
 }
 

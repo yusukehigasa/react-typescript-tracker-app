@@ -1,13 +1,11 @@
-type CountryDataType = {
-  date: string,
-  newConfirmed: number,
-  totalConfirmed: number,
-  newRecovered: number,
-  totalRecovered: number,
-}
-
 type ResultsType = {
-  countryData: CountryDataType;
+  countryData: {
+    date: string,
+    newConfirmed: number,
+    totalConfirmed: number,
+    newRecovered: number,
+    totalRecovered: number,
+  };
 }
 
 const Results = ({countryData}: ResultsType) => {
