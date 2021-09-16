@@ -2,8 +2,13 @@ import Header from '../components/Header';
 import Title from '../components/Title';
 import Card from '../components/Card';
 
-type WorldPageType = {
-  allCountriesData: any;
+interface SingleCountriesDataType {
+  Country: string,
+  NewConfirmed: number,
+  TotalConfirmed: number,
+}
+interface WorldPageType {
+  allCountriesData: Array<SingleCountriesDataType>
 }
 
 const WorldPage = ({allCountriesData}: WorldPageType) => {

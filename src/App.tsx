@@ -14,6 +14,12 @@ type CountryDataType = {
   newRecovered: number,
   totalRecovered: number,
 }
+interface SingleCountriesDataType {
+  Country: string,
+  NewConfirmed: number,
+  TotalConfirmed: number,
+}
+interface AllCountriesDataType extends Array<SingleCountriesDataType>{}
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,7 +31,11 @@ function App() {
     newRecovered: 0,
     totalRecovered: 0,
   });
-  const [allCountriesData, setAllCountriesData] = useState<any>();
+  const [allCountriesData, setAllCountriesData] = useState<AllCountriesDataType>([{
+    Country: "",
+    NewConfirmed: 0,
+    TotalConfirmed: 0,
+  }]);
 
   useEffect(() => {
     const getCountryData = () => {

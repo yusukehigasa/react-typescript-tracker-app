@@ -1,5 +1,10 @@
-type CardType = {
-  allCountriesData: any;
+interface SingleCountriesDataType {
+  Country: string,
+  NewConfirmed: number,
+  TotalConfirmed: number,
+}
+interface CardType {
+  allCountriesData: Array<SingleCountriesDataType>
 }
 
 const Card = ({allCountriesData}: CardType) => {
@@ -8,7 +13,7 @@ const Card = ({allCountriesData}: CardType) => {
     <div>
       <h2>Card</h2>
 
-      {allCountriesData && allCountriesData.map((singleData: any, index: number) =>
+      {allCountriesData && allCountriesData.map((singleData, index) =>
         <div key={index}>
           <h3>{singleData.Country}</h3>
           <p>新規感染者： {singleData.NewConfirmed}</p>
