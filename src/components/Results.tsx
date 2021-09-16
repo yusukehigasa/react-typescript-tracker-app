@@ -1,12 +1,4 @@
-type ResultsType = {
-  countryData: {
-    date: string,
-    newConfirmed: number,
-    totalConfirmed: number,
-    newRecovered: number,
-    totalRecovered: number,
-  };
-}
+import { ResultsType } from '../types';
 
 const Results = ({countryData}: ResultsType) => {
   return (
