@@ -6,15 +6,17 @@ import Loading from '../components/Loading';
 
 import { TopPageType } from '../types';
 
-const TopPage = ({countriesJson, setCountry, countryData, loading}: TopPageType) => {
+const TopPage = ({
+  countriesJson,
+  setCountry,
+  countryData,
+  loading,
+}: TopPageType) => {
   return (
     <div>
       <Header />
       <Title />
-      <Selector
-        countriesJson={countriesJson}
-        setCountry={setCountry}
-      />
+      <Selector countriesJson={countriesJson} setCountry={setCountry} />
       {loading ? <Loading /> : <Results countryData={countryData} />}
     </div>
   );

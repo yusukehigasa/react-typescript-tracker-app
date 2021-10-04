@@ -1,15 +1,14 @@
 import { SelectorType } from '../types';
 
-const Selector = ({countriesJson, setCountry}: SelectorType) => {
-
+const Selector = ({ countriesJson, setCountry }: SelectorType) => {
   return (
     <div>
-      <select onChange={ e => setCountry(e.target.value) }>
-        {countriesJson.map((country, index) =>
+      <select onChange={(e) => setCountry(e.target.value)}>
+        {countriesJson.map((country, index) => (
           <option key={index} value={country.Slug}>
             {country.Country}
           </option>
-        )}
+        ))}
       </select>
     </div>
   );

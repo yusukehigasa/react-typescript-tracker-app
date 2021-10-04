@@ -4,14 +4,14 @@ import Card from '../components/Card';
 
 import { WorldPageType } from '../types';
 
-const WorldPage = ({allCountriesData}: WorldPageType) => {
-  return(
+const WorldPage = ({ allCountriesData }: WorldPageType) => {
+  return (
     <div>
       <Header />
       <Title />
       <Card allCountriesData={allCountriesData} />
     </div>
   );
-}
+};
 
 export default WorldPage;

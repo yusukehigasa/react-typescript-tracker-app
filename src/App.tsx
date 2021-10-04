@@ -11,53 +11,66 @@ import { CountryDataType, AllCountriesDataType } from './types';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [country, setCountry] = useState<string>("japan");
+  const [country, setCountry] = useState<string>('japan');
   const [countryData, setCountryData] = useState<CountryDataType>({
-    date: "",
+    date: '',
     newConfirmed: 0,
     totalConfirmed: 0,
     newRecovered: 0,
     totalRecovered: 0,
   });
-  const [allCountriesData, setAllCountriesData] = useState<AllCountriesDataType>([{
-    Country: "",
-    NewConfirmed: 0,
-    TotalConfirmed: 0,
-  }]);
+  const [allCountriesData, setAllCountriesData] =
+    useState<AllCountriesDataType>([
+      {
+        Country: '',
+        NewConfirmed: 0,
+        TotalConfirmed: 0,
+      },
+    ]);
 
   useEffect(() => {
     const getCountryData = () => {
       setLoading(true);
       fetch(`https://api.covid19api.com/country/${country}`)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           setCountryData({
             date: data[data.length - 1].Date,
-            newConfirmed: data[data.length - 1].Confirmed - data[data.length - 2].Confirmed,
+            newConfirmed:
+              data[data.length - 1].Confirmed - data[data.length - 2].Confirmed,
             totalConfirmed: data[data.length - 1].Confirmed,
-            newRecovered: data[data.length - 1].Recovered - data[data.length - 2].Recovered,
+            newRecovered:
+              data[data.length - 1].Recovered - data[data.length - 2].Recovered,
             totalRecovered: data[data.length - 1].Recovered,
           });
 
           setLoading(false);
         })
-        .catch(err => alert('エラーが発生しました。ページをリロードして、もう一度トライしてください。'));
-    }
+        .catch((err) =>
+          alert(
+            `エラーが発生しました。ページをリロードして、もう一度トライしてください。${err}`,
+          ),
+        );
+    };
 
     getCountryData();
   }, [country]);
 
   useEffect(() => {
     fetch(`https://api.covid19api.com/summary`)
-      .then(res => res.json())
-      .then(data => setAllCountriesData(data.Countries))
-      .catch(err => alert('エラーが発生しました。ページをリロードして、もう一度トライしてください。'));
+      .then((res) => res.json())
+      .then((data) => setAllCountriesData(data.Countries))
+      .catch((err) =>
+        alert(
+          `エラーが発生しました。ページをリロードして、もう一度トライしてください。${err}`,
+        ),
+      );
   }, []);
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <TopPage
             countriesJson={countriesJson}
             setCountry={setCountry}
@@ -65,14 +78,12 @@ function App() {
             loading={loading}
           />
         </Route>
-        <Route path="/world">
-          <WorldPage
-            allCountriesData={allCountriesData}
-          />
+        <Route path='/world'>
+          <WorldPage allCountriesData={allCountriesData} />
         </Route>
       </Switch>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

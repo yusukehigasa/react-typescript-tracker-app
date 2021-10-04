@@ -1,6 +1,6 @@
 import { ResultsType } from '../types';
 
-const Results = ({countryData}: ResultsType) => {
+const Results = ({ countryData }: ResultsType) => {
   return (
     <div>
       <p>日付： {countryData.date.slice(0, 10)}</p>
