@@ -13,7 +13,7 @@ const TopPage = ({
   loading,
 }: TopPageType) => {
   return (
-    <div>
+    <div data-testid='wrapper'>
       <Header />
       <Title />
       <Selector countriesJson={countriesJson} setCountry={setCountry} />

@@ -6,7 +6,7 @@ import { WorldPageType } from '../types';
 
 const WorldPage = ({ allCountriesData }: WorldPageType) => {
   return (
-    <div>
+    <div data-testid='wrapper'>
       <Header />
       <Title />
       <Card allCountriesData={allCountriesData} />
